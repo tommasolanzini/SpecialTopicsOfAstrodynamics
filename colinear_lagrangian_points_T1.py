@@ -39,3 +39,15 @@ while err_rel > tol and abs(d2U_dx2(x, mu_SE)) > tol:
 L2_SE = x
 print(f'Sun - Earth L2: {x}')
 print(f'Verification S-E d2r/dt2: {d2r(x, mu_SE)}')
+
+
+# L1, needed for verificationat task 3
+x = 0.99
+err_rel = abs(dU_dx(x, mu_SE) / d2U_dx2(x, mu_SE))
+
+# Newton's method
+while err_rel > tol and abs(d2U_dx2(x, mu_SE)) > tol:
+    x = x - dU_dx(x, mu_SE) / d2U_dx2(x, mu_SE)
+    err_rel = abs(dU_dx(x, mu_SE) / d2U_dx2(x, mu_SE))
+L1_SE = x
+print(f'Sun - Earth L1: {x}')
